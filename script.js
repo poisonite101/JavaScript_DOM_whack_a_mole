@@ -9,7 +9,7 @@ let lastHole;
 let timeUp = false;
 let score = 0;
 let countdown;
-let timeLimit = 20000;
+let timeLimit = 200000;
 
 function pickRandomHole(holes) {
   const randomHole = Math.floor(Math.random() * holes.length);
@@ -44,13 +44,12 @@ window.onload = startGame();
 
 // Step 3 dynamically change text content to countdown
 function startGame() {
-  countdown = timeLimit / 20;
+  countdown = timeLimit / 2000;
   scoreBoard.textContent = 0;
   scoreBoard.style.display = "block";
   countdownBoard.textContent = countdown;
   timeUp = false;
   score = 0;
-  console.log(countdown);
   popOut();
 
   setTimeout(function() {
@@ -60,11 +59,12 @@ function startGame() {
   let startCountdown = setInterval(function() {
     countdown -= 1;
     countdownBoard.textContent = countdown;
-    if (countdown < 0) {
+    if (countdown <= 0) {
       countdown = 0;
       clearInterval(startCountdown);
       countdownBoard.textContent =
         "Time is up!! Thank you for protecting our planet. This is the way!";
+      return;
     }
   }, 1000);
 }
@@ -85,4 +85,6 @@ function whack(e) {
 }
 
 // Step 5 keep track of score with forEach
-moles.forEach(mole => mole.addEventListener("click", whack));
+if () {
+  moles.forEach(mole => mole.addEventListener("click", whack));
+}
