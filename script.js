@@ -85,6 +85,4 @@ function whack(e) {
 }
 
 // Step 5 keep track of score with forEach
-if () {
-  moles.forEach(mole => mole.addEventListener("click", whack));
-}
+moles.forEach(mole => mole.addEventListener("click", whack));
